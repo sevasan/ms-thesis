@@ -1,0 +1,88 @@
+% !TEX root = ../../main.tex
+
+В этой главе исследуется частный случай формулы ($\ref{eq:HeatKernelFinal}$): мы будем строить разложение теплового ядра по производным тензора напряжённости $F_{\mu \nu}$, что соответствует неабелеву калибровочному полю медленно меняющейся амплитуды и обобщает результат для ковариантно--постоянного поля. Подобные разложения можно строить и для других полевых конфигураций (например, используя переменные Фаддеева--Ниеми), но рассматриваемый здесь случай является, по всей видимости, самым простым.
+
+Итак, градиентное разложение теплового ядра можно получить в калибровке Фока--Швингера $(x-y)_\mu A_\mu(x)=0$, так как в ней есть замечательная связь потенциала $A_\mu$ и напряженности поля $F_{\mu \nu}$ (также см. Приложение $\ref{sec:FockSchwinger}$):
+\begin{equation}
+	\label{eq:FS}
+	A_\mu(x)=-\int\limits_0^1\!\D z s_\nu z F_{\mu \nu}(y+sz)=-\sum\limits_{n=0}^\infty \frac{1}{n!(n+2)}s_\nu s_{\rho_1}\dots s_{\rho_n}\partial_{\rho_1}\dots\partial_{\rho_n}F_{\mu \nu}(y),
+\end{equation}
+где $s=x-y$, а второе равенство получается интегрированием ряда Тейлора для тензора напряженности $F_{\mu \nu}$. Отметим, что в калибровке Фока--Швингера присутствует условие, фиксирующее калибровочное поле в точке $A_\mu(y)=0$, поэтому в точке $y$ можно заменить $\partial_\mu \to \nabla_\mu$ в разложении ($\ref{eq:FS}$), что мы и будем предполагать далее.
+
+Теперь рассмотрим функциональный интеграл для теплового ядра оператора $M=-\nabla^2$ (вклад духов в ($\ref{eq:EffAction1}$)), используя представление ($\ref{eq:HeatKernelFinal}$):
+\begin{equation}
+	\label{eq:intFullGhost}
+	\begin{split}
+K_{-\nabla^2}(t)&=\mkern-6\thickmuskip\int\limits_{s(0)=s(t)=0}\mkern-6\thickmuskip \mathcal{D}s\mathcal{D}U \exp\biggr\{ \int\limits_0^t \D \tau \biggr(-\frac{\dot{s}^2}{4} + iJ\tr\left[\sigma_3\left( -\frac12 U^\dagger F_{\mu\nu}U \dot{s}_\mu s_\nu + iU^\dagger \dot{U}\right)\right]\\
+	&+ iJ\tr\left[ \sigma_3\left( -\frac13 U^\dagger \nabla_\rho F_{\mu \nu}U\dot{s}_\mu s_\nu s_\rho -\frac18 U^\dagger\nabla_{\rho_1}\nabla_{\rho_2}F_{\mu \nu}U\dot{s}_\mu s_\nu s_{\rho_1} s_{\rho_2} - \dots \right) \right] \biggr)\biggr\},
+	\end{split}
+\end{equation}
+где все значения напряжённости и её производных $F_{\mu \nu}\equiv F_{\mu \nu}(y)$, $\nabla_\rho F_{\mu \nu}\equiv \nabla_\rho F_{\mu \nu}(y) $ берутся в точке $y$. Градиентное разложение теплового ядра получится из этой формулы, если написать обычный ряд теории возмущений по малым параметрам $\nabla_\rho F_{\mu \nu}$, $\nabla_{\rho_1}\nabla_{\rho_2} F_{\mu \nu}$\dots Нулевым приближением будет ковариантно--постоянное поле, а первыми поправками будут следующие 3 двухпетлевые вакуумные диаграммы (см. также \cite{Mnev} для абелева случая):
+%=============================================================================
+\begin{align}
+	\label{eq:Gamma1}
+	\Gamma_1^{-\nabla^2} &= -\frac i8 \nabla_{(\rho}\nabla_\sigma F_{\nu)\mu}\int\!\D \tau\, G_{\dot{\mu} \nu}G_{\rho
+ \sigma}=
+	\begin{gathered}
+		\includegraphics{diagrams/2loops.1}	
+%		\begin{fmffile}{2loops}
+%			\begin{fmfgraph}(40,40)
+%				\fmfleft{i}
+%				\fmfright{o}
+%				\fmf{phantom,tension=5}{i,i1}
+%				\fmf{phantom,tension=5}{o,o1}
+%				\fmf{plain,left,tension=0.4}{i1,v1,i1}
+%				\fmf{plain,right,tension=0.4}{o1,v1,o1}
+%			\end{fmfgraph}
+%		\end{fmffile}
+	\end{gathered}
+	\\
+	\label{eq:Gamma2}
+	\Gamma_2^{-\nabla^2} &= \frac{i}{18}\nabla_{(\rho}F_{\nu)\mu}\nabla_{(\rho'}F_{\nu')\mu'} \int\!\D \tau \D \tau' ( 2 G_{\dot{\mu}\dot{\mu}'}G_{\nu \nu'}G_{\rho \rho'} + 4 G_{\dot{\mu}\nu'}G_{\nu \dot{\mu}'}G_{\rho \rho'})=
+	\begin{gathered}
+		\includegraphics{diagrams/bubble3.1}	
+%		\begin{fmffile}{bubble3}
+%			\begin{fmfgraph}(40,40)
+%				\fmfleft{i}
+%				\fmfright{o}
+%				\fmf{phantom,tension=5}{i,v1}
+%				\fmf{phantom,tension=5}{v2,o}
+%				\fmf{plain,left,tension=0.4}{v1,v2,v1}
+%				\fmf{plain}{v1,v2}
+%			\end{fmfgraph}
+%		\end{fmffile}
+	\end{gathered}
+	\\
+	\label{eq:Gamma3}
+	\Gamma_3^{-\nabla^2} &= \frac{i}{18}\nabla_{(\rho}F_{\nu)\mu}\nabla_{(\rho'}F_{\nu')\mu'} \int\!\D \tau \D \tau' ( G_{\dot{\mu}\dot{\mu}'}G_{\nu \rho}G_{\nu' \rho'}\nonumber\\
+	&\hspace{6cm}+ 4 G_{\dot{\mu}\nu'}G_{\nu \rho}G_{\dot{\rho}' \rho'} + 4 G_{\nu \nu'} G_{\dot{\mu}\rho}G_{\dot{\mu}' \rho'})=
+	\begin{gathered}
+		\includegraphics{diagrams/eyeglasses.1}
+%		\begin{fmffile}{eyeglasses}
+%			\begin{fmfgraph}(40,40)
+%				\fmfleft{i}
+%				\fmfright{o}
+%				\fmf{phantom,tension=5}{i,i1}
+%				\fmf{phantom,tension=5}{o,o1}
+%				\fmf{plain,left,tension=0.4}{i1,v1,i1}
+%				\fmf{plain,right,tension=0.4}{o1,v2,o1}
+%				\fmf{plain}{v1,v2}
+%			\end{fmfgraph}
+%		\end{fmffile}
+	\end{gathered}
+\end{align}
+где по индексам в круглых скобках производится симметризация.
+%=============================================================================
+Стоит отметить, что термин <<двухпетлевой>> здесь относится только к нашему градиентному разложению, т.е. в двухпетлевых вакуумных диаграммах ($\ref{eq:Gamma1}$--$\ref{eq:Gamma3}$) собраны вклады с двумя производными поля. По константе Планка $\hbar$ мы всё также находимся в рамках одной петли.
+
+В заключении приведём выражение для теплового ядра оператора $M=-\nabla^2\eta_{\mu \nu}+B_{\mu \nu}$ (вклад калибровочного поля), где $B^{ab}_{\mu \nu}=-2F^c_{\mu \nu}\,if^{acb}$ (присоединённое представление):
+\begin{equation}
+	\label{eq:intFullGauge}
+	\begin{split}
+K&_{-\nabla^2-2F_{\mu \nu}}(y,y;t)=\mkern-6\thickmuskip \int\limits_{s(0)=s(t)=0}\mkern-6\thickmuskip \mathcal{D}s\mathcal{D}U \exp\biggr\{
+		\int\limits_0^t \D \tau \biggr(-\frac{\dot{s}^2}{4}+ iJ\tr\left[\sigma_3\left( -\frac12 U^\dagger F_{\mu'\nu'}U \dot{s}_{\mu'} s_{\nu'} + iU^\dagger \dot{U}\right)\right]\\
+				&+ iJ\tr\left[ \sigma_3\left(\!-\frac13 U^\dagger \nabla_\rho F_{\mu' \nu'}U\dot{s}_{\mu'} s_{\nu'} s_\rho -\frac18 U^\dagger\nabla_{\rho_1}\!\nabla_{\rho_2}F_{\mu' \nu'}U\dot{s}_{\mu'} s_{\nu'} s_{\rho_1} s_{\rho_2} - \dots \right) \right]\biggr)\eta_{\mu \nu}\\
+				&+ iJ\tr\left[ \sigma_3\left( - 2U^\dagger F_{\mu \nu}U - 2U^\dagger\nabla_{\rho}F_{\mu \nu}Us_{\rho}-\dots \right) \right]
+		\biggr\}.
+	\end{split}
+\end{equation}

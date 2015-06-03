@@ -1,0 +1,41 @@
+% !TEX root = ../../main.tex
+
+Этот раздел посвящён введению в метод теплового ядра $K_M$ и доказательству его представления в виде интеграла по траекториям ($\ref{eq:HeatKernelPathIntegral}$).
+
+Для вычисления логарифма детерминанта оператора $M$ удобно использовать метод собственного времени \cite{Fock}, который заключается в нахождении т.н. теплового ядра:
+\begin{equation*}
+	K_M(x,y;t)=\langle x|e^{-Mt}|y\rangle,
+\end{equation*}
+которое удовлетворяет <<уравнению теплопроводности>>:
+\begin{equation*}
+	\begin{split}
+		&(\partial_t + M)K_M(x,y;t)=0,\\
+		&K_M(x,y;t)=\delta(x-y).
+	\end{split}
+\end{equation*}
+С помощью теплового ядра можно вычислить логарифм детерминанта оператора $M$:
+\begin{equation}
+	\label{eq:LogDetHeatKernel}
+	\ln{\det{M}} - \ln{\det{M_0}} = - \int\limits_0^\infty \!\frac{\D t}{t}\,\tr\left( e^{-Mt} - e^{-M_0 t} \right) = -\int\limits_0^\infty\!\frac{\D t}{t}\left( K_M(t) - K_{M_0}(t) \right).
+\end{equation}
+Для эллиптического оператора $M=-\nabla^2+B$ существует разложение Сили--деВитта теплового ядра по степеням собственного времени $t$:
+\begin{equation}
+	\label{eq:SilleyWitt}
+	K_M(x,y;t)=\frac{1}{(4\pi t)^{d/2}}e^{-\frac{(x-y)^2}{4t}}\sum\limits_{n=0}^\infty a_M^n(x,y)t^n
+\end{equation}
+При совпадающих точках $x=y$, разложение примет вид:
+\begin{equation*}
+	K_M(y,y;t)=\frac{1}{(4\pi t)^{d/2}} \left[ 1 - t B(y) -t^2\left(\frac{1}{12}F_{\alpha \beta}(y)F_{\alpha \beta}(y) - \frac 12 B^2(y) + \frac 16 \nabla^2 B(y)\right) +\cdots\right]
+\end{equation*}
+Отсюда можно получить представление теплового ядра через интеграл по путям:
+\begin{align}
+	\label{eq:HeatKernelPathIntegral}
+	K_M(x,y;t)&=\int\!\D z_{n-1}\cdots \D z_1\,\langle x|e^{-Mt/n}|z_{n-1}\rangle\langle z_{n-1}|\cdots|z_{1}\rangle\langle z_1|e^{-Mt/n}|y\rangle\nonumber\\
+	&=\int\limits_{z(0)=y}^{z(t)=x}\mathcal{D}z(\tau)\,\,\mathcal{P}\exp{\left\{\int\limits_0^t\!\D \tau\,\left( -\frac{\dot{z}^2}{4} + i A_\mu(z)\dot{z}_\mu - B(z) \right)\right\}}.
+\end{align}
+Здесь возникает $\mathcal{P}$--экспонента, упорядочивающая входящие в неё матрицы вдоль пути $z(\tau)$: в разложении этой экспоненты в степенной ряд, в каждом слагаемом матрицы с б\'{о}льшим значением $\tau$ стоят слева от матриц с меньшим $\tau$. Этот объект также известен как Вильсоновская линия или голономия связности. Важным свойством этого объекта является его зависимость от пути, вдоль которого производится интегрирование, что делает невозможным прямой расчёт интеграла (\ref{eq:HeatKernelPathIntegral}).
+%Заметим, что если выбрать собственное время мнимым (и сделать замену $\tau\to i \tau$), то действие будет вещественным:
+%\begin{align}
+%	\label{eq:KMreal}
+%	K_M(x,y;it)=\int\limits_{z(0)=y}^{z(t)=x}\mathcal{D}z(\tau)\mathcal{P}\exp{\left\{ i\int\limits_0^t\!\D \tau\,\left( \frac{\dot{z}^2}{4} + A_\mu(z)\dot{z}_\mu - B(z) \right)\right\}}
+%\end{align}

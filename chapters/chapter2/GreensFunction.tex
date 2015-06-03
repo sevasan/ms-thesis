@@ -1,0 +1,41 @@
+% !TEX root = ../../main.tex
+
+Теперь рассмотрим, как изменится функция Грина по сравнению с абелевым случаем \cite{Mnev}. Для этого выберем собственное время мнимым, чтобы получить вещественное действие. Оператор квадратичной флуктуации в случае калибровочной группы $SU(2)$ выглядит так:
+\begin{equation*}
+	\Delta_{\mu \nu}=-\frac 12 \delta_{\mu \nu}\partial_\tau^2 + (l - \alpha \theta(\tau - \xi)) F_{\mu \nu}\partial_\tau.
+\end{equation*}
+Заметим, что $\Delta_{\mu \nu}$ явно зависит от времени $\tau$ (из--за функции Хевисайда $\theta(\tau - \xi)$) и описывает движение частицы в постоянном магнитном поле $F_{\mu \nu}$, которое испытывает скачок при $\tau=\xi$. Для нахождения функции Грина $G_{\mu \nu}(\tau, \tau')$ этого оператора (с нулевыми граничными условиями) необходимо рассматривать два случая ($\tau' > \xi$ и $\tau' < \xi$) и разбить интервал $\tau\in [0,t]$ на три промежутка точками $\tau=\tau'$ и $\tau=\xi$. На этих промежутках уравнение для функции Грина
+\begin{equation}
+	\label{eq:GreensFunctEq}
+	\Delta_{\mu \nu}G(\tau,\tau')_{\nu \sigma}=\delta_{\mu \sigma}\delta(\tau-\tau')
+\end{equation}
+становится однородным. Решив его на каждом из промежутков (учитывая нулевые граничные условия), мы получим набор констант $(c_1,c_2,c_3,c_4)$ и с их помощью можно сшить полученные решения: сама функция Грина должна быть непрерывной, а первая производная испытывать скачки в точках $\tau=\tau'$ и $\tau=\xi$  (его величину можно найти проинтегрировав уравнение ($\ref{eq:GreensFunctEq}$) по $\epsilon$--окрестности точки разрыва). Условия на скачки выглядят так:
+\begin{equation}
+	\label{eq:BoundCond}
+	\begin{split}
+		\partial_\tau G_{\mu \nu}(\tau'+0,\tau') - \partial_\tau G_{\mu \nu}(\tau'-0,\tau') &= -2,\\
+		\partial_\tau G_{\mu \nu}(\xi+0,\tau') - \partial_\tau G_{\mu \nu}(\xi-0,\tau') &= 2 F_{\mu \sigma} (l'-l) G_{\sigma \nu}(\xi, \tau'),
+	\end{split}
+\end{equation}
+где $l'=l-\alpha$. Например, при $\xi<\tau'$, скачок слагаемого с $F_{\mu \nu}$ (т.е. магнитного поля) приведёт к следующему разбиению интервала $[0,t]$:
+\begin{figure}[H]
+	\centering
+	%\def\svgwidth{5cm} % если надо изменить размер
+	\includesvg{img/axis}
+	\caption{Скачок магнитного поля и однородные решения уравнения ($\ref{eq:GreensFunctEq}$)}
+	\label{fig:axis}
+\end{figure}
+Решение системы линейных уравнений на константы $(c_1,c_2,c_3,c_4)$, полученной из ($\ref{eq:BoundCond}$) (и непрерывности функции Грина), удобно провести с помощью \textsc{Wolfram Mathematica}. В результате получим:
+\begin{equation}
+	\label{eq:GreensFunc}
+	\begin{split}
+		G_{\mu \nu}(\tau, \tau')\Big|_{\tau=\tau'=\xi}&=\left(\frac{\left( -1 + e^{2 Fl\xi} \right)\left( e^{2Fl'\xi} - e^{2Fl't} \right)}{F D}\right)_{\mu \nu},\\
+		\partial_\tau G_{\mu \nu}(\tau,\tau')\Big|_{\tau=\tau'=\xi} &= \left(\frac{e^{2 F (l \xi +l' t)}l + e^{2 F l' \xi}l' - e^{2 F(l+l')\xi}(l+l')}{D}\right)_{\mu \nu},\\
+		D &= -e^{2 F l'\xi}l + e^{2 F l' t}(l-l') + e^{2 F(l\xi +l't)}l',
+	\end{split}
+\end{equation}
+где мы использовали симметричное определение:
+\begin{equation*}
+	\partial_\tau G_{\mu \nu}(\tau,\tau')\Big|_{\tau=\tau'=\xi}=\frac 12 \left(\partial_\tau G_{\mu \nu}(\tau,\tau')\Big|_{\tau\to\tau'+0} + \partial_\tau G_{\mu \nu}(\tau,\tau')\Big|_{\tau\to \tau'-0}\right).
+\end{equation*}
+Это связано с тем, что в точке $\tau=\tau'$ производная функции Грина имеет скачок. Такая же ситуация могла бы произойти и при $\tau'\to \xi$, но оказывается, что $\partial_\tau G(\tau,\tau')\Big|_{\tau'=\xi+0}=\partial_\tau G(\tau,\tau')\Big|_{\tau'=\xi-0}$. Стоит отметить, что решение ($\ref{eq:GreensFunc}$) совпадает с абелевым случаем \cite{Mnev}, если положить $l=l'$ (т.е. $\alpha=0$ в ($\ref{eq:GreensFunctEq}$)).

@@ -1,0 +1,50 @@
+% !TEX root = ../../main.tex
+
+В этом разделе мы докажем следующую формулу:
+\begin{equation}
+	\label{eq:DPFormulaEuler}
+	\tr\!\left[\sigma_3\left(U^\dagger \vec{A}\cdot\frac{\vec{\sigma}}{2} U + iU^\dagger \dot{U}\right)\right] = \vec{A}\cdot\vec{n} + (\cos{\theta} - 1)\dot{\phi} + (\dot{\phi} + \dot{\psi}),
+\end{equation}
+в которой используется параметризация элемента группы $U\in SU(2)$ углами Эйлера $(\phi, \psi, \theta)$:
+\begin{equation}
+	\label{euler}
+	U = e^{-i \phi \sigma_3/2}e^{-i \theta \sigma_2/2}e^{-i \psi \sigma_3/2}.
+\end{equation}
+Для доказательства воспользуемся формулой для $\sigma$--матриц:
+\begin{equation*}
+	\exp{\left[-i \frac{\phi}{2} (\vec{n}\vec{\sigma})\right]}=-i(\vec{n}\vec{\sigma})\sin{\frac{\phi}{2}}+\cos{\frac{\phi}{2}}.
+\end{equation*}
+Теперь подставим этот результат в ($\ref{euler}$):
+\begin{align*}
+	U &= \left(\cos{\frac{\phi}{2}}-i \sigma_3\sin{\frac{\phi}{2}}\right)\left(\cos{\frac{\theta}{2}}-i \sigma_3\sin{\frac{\theta}{2}}\right)\left(\cos{\frac{\psi}{2}}-i \sigma_3\sin{\frac{\psi}{2}}\right)\\
+	&= \cos{\frac{\theta}{2}}\cos{\frac{\phi+\psi}{2}} - i \sigma_3 \cos{\frac{\theta}{2}}\sin{\frac{\phi+\psi}{2}} - i \sigma_2 \sin{\frac{\theta}{2}}\cos{\frac{\phi-\psi}{2}} + i \sigma_1 \sin{\frac{\theta}{2}}\sin{\frac{\phi - \psi}{2}}\\
+	&=\cos{\frac{\theta}{2}}
+	\begin{bmatrix}
+		\exp{\left(-i\frac{\phi+\psi}{2}\right)} & 0 \\
+		0 & \exp{\left(i\frac{\phi+\psi}{2}\right)}
+	\end{bmatrix}
+	- \sin{\frac{\theta}{2}}
+	\begin{bmatrix}
+		0 & \exp{\left(-i\frac{\phi - \psi}{2}\right)} \\
+		-\exp{\left(i\frac{\phi - \psi}{2}\right)} & 0
+	\end{bmatrix}.
+\end{align*}
+В итоге:
+\begin{align*}
+	U = 
+	\begin{bmatrix}
+		\cos{\frac{\theta}{2}\exp{\left(-i\frac{\phi+\psi}{2}\right)}} & -\sin{\frac{\theta}{2}\exp{\left(-i\frac{\phi-\psi}{2}\right)}}\\[6pt]
+		\sin{\frac{\theta}{2}\exp{\left(i\frac{\phi-\psi}{2}\right)}} & \cos{\frac{\theta}{2}\exp{\left(i\frac{\phi+\psi}{2}\right)}}
+	\end{bmatrix}.
+\end{align*}
+В этих обозначениях получаем:
+\begin{align*}
+	&\tr\left[\sigma_3 U^\dagger \dot{U}\right] = -i \left( \left(\dot{\phi} + \dot{\psi}\right) + \dot{\phi}\left(\cos{\theta} - 1\right)\right),
+	\\
+	&\tr\left[\sigma_3U^\dagger \frac{\sigma_1}{2} U\right] = \sin{\theta}\cos{\phi},
+	\\
+	&\tr\left[\sigma_3U^\dagger \frac{\sigma_2}{2} U\right] = \sin{\theta}\sin{\phi},
+	\\
+	&\tr\left[\sigma_3U^\dagger \frac{\sigma_3}{2} U\right] = \cos{\theta},
+\end{align*}
+что и доказывает исходную формулу ($\ref{eq:DPFormulaEuler}$).

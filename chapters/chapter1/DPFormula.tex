@@ -1,0 +1,13 @@
+% !TEX root = ../../main.tex
+
+Для следа $\mathcal{P}$--экспоненты (т.е. петли Вильсона) Дьяконовым и Петровым была предложена следующая формула \cite{Diakonov1989}:
+\begin{align}
+	\label{eq:DPFormulaGeneral}
+	\tr\, \mathcal{P} \exp{\left(i\int\limits_0^t\!\D \tau\, A^J \right)}=\int\mathcal{D}U\exp{\left\{ iJ\int\limits_0^t\! \D \tau \, \tr \left[ \sigma_3 \left( U^\dagger A U + i U^\dagger U \right) \right]\right\}},
+\end{align}
+где вводится вспомогательное поле $U(\tau)\in SU(2)$ на отрезке $[0,t]$, $A^J=A^J_\mu\dot{x}_\mu$, поле $A_\mu^J\in \mathfrak{su}(2)$ в представлении спина $J$, а в правой части $A=A_\mu\dot{x}_\mu$ предполагается в фундаментальном представлении. Оригинальное доказательство этой формулы в работе \cite{Diakonov1989} основывается на регуляризации интеграла по $SU(2)$ кинетическим членом. В то же время в статье \cite{Alekseev1988} для постоянного $A=A^3 \frac{\sigma_3}{2}$ предлагается другая регуляризация, основываясь на которой можно доказать и исходную формулу ($\ref{eq:DPFormulaGeneral}$) (см. также \cite{Mnev}). Используя параметризацию $U\in SU(2)$ углами Эйлера $(\phi, \psi, \theta)$ 
+\begin{align}
+	\label{eq:EulerAngles}
+	U=e^{-i \phi \sigma_3/2}e^{-i \theta \sigma_2/2}e^{-i \psi \sigma_3/2},
+\end{align}
+можно показать, что вклад в интеграл будут давать только траектории с $\cos{\theta}=l/J$, где $l=-J\dots J$ \cite{Mnev}, в отличие от фейнмановского континуального интеграла, в котором основной вклад несут непрерывные траектории. Таким образом, (\ref{eq:DPFormulaGeneral}) даёт пример интеграла по траекториям, в котором мера сосредоточена на <<дискретных>> траекториях.

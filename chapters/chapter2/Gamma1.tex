@@ -1,0 +1,28 @@
+% !TEX root = ../../main.tex
+
+Рассмотрим теперь наиболее простой вклад ($\ref{eq:Gamma1}$) в градиентном разложении интеграла ($\ref{eq:intFullGhost}$). Как и в случае ковариантно--постоянного поля, калибровочным преобразованием можно повернуть $\vec{F}_{\mu \nu}\cdot\vec{\sigma}$ в квадратичном по $s_\mu$ члене $U^\dagger \vec{F}_{\mu \nu}\cdot\vec{\sigma}U\dot{s}_\mu s_\nu$ до $F_{\mu \nu}\sigma_3$. При этом члены с производными, конечно, будут всё также иметь все три цветные компоненты. Для вспомогательного поля $U\in SU(2)$ мы выберем параметризацию углами Эйлера ($\ref{eq:EulerAngles}$), тогда аргумент экспоненты в формуле Дьяконова--Петрова ($\ref{eq:DPFormulaGeneral}$) будет таким:
+\begin{equation*}
+	\tr\!\left[\sigma_3\left(U^\dagger \vec{A}\cdot\frac{\vec{\sigma}}{2} U + iU^\dagger \dot{U}\right)\right] = \vec{A}\cdot\vec{n} + (\cos{\theta} - 1)\dot{\phi} + (\dot{\phi} + \dot{\psi}),
+\end{equation*}
+где $\vec{n}=(\sin{\theta}\cos{\phi}, \sin{\theta}\sin{\phi}, \cos{\theta})$ (см. Приложение $\ref{sec:DPFormula}$). Слагаемое c $\dot{\phi}+\dot{\psi}$ из--за периодических граничных условий $\phi(0)=\phi(t)+2\pi n$ и $\psi(0)=\psi(t)+2\pi m$ не даст вклада в интеграл и его можно опустить. После этого, выражение для $\Gamma^{-\nabla^2}_1$ ($\ref{eq:Gamma1}$) станет таким:
+\begin{equation}
+	\label{eq:Gamma1Integral}
+	\begin{split}
+\Gamma^{-\nabla^2}_1=\mkern-6\thickmuskip\int\limits_{s(0)=s(t)=0}\mkern-5\thickmuskip&\mathcal{D}s\,\mathcal{D}\phi\,\mathcal{D}\cos{\theta} \exp\biggr\{ \int\limits_0^t \D \tau \biggr(-\frac{\dot{s}^2}{4} + iJ\left( -\frac12 F_{\mu\nu}\dot{s}_\mu s_\nu \cos{\theta} + \dot{\phi} (\cos{\theta} - 1)\right) \biggr)\biggr\}\times\\
+&\times \left( -\frac{i}{8}J \int\limits_0^t \!\D \xi\,\nabla_{\rho_1}\nabla_{\rho_2}\vec{F}_{\mu \nu}\cdot \vec{n}(\xi)\, \dot{s}_\mu s_\nu s_{\rho_1} s_{\rho_2} \right).
+	\end{split}
+\end{equation}
+Здесь сначала необходимо взять интеграл по траекториям на $SU(2)$ (т.е. по переменным $\mathcal{D}\phi$ и $\mathcal{D}\cos{\theta}$), а только после этого по $\mathcal{D}s$. Отметим, что в интеграле ($\ref{eq:Gamma1Integral}$) в предэкспоненциальном множителе содержится сумма компонент вектора $\vec{n(\xi)}$ (в какой--то точке $\xi\in [0,t]$), которые содержат переменные интегрирования $\phi$ и $\cos{\theta}$. Результат для слагаемого общего вида такой (см. Приложение $\ref{sec:Calculation}$):
+\begin{equation*}
+	\begin{split}
+	&\int\mathcal{D}\phi\,\mathcal{D}\cos{\theta}\,\exp{\left\{ iJ\int\limits_0^t \D \tau\,\dot{\phi} (\cos{\theta} - 1) - h(\tau)\cos{\theta}\right\}} \exp{\left\{i \alpha \phi(\xi)\right\}} \, g(\cos{\theta(\xi)})\\
+	&=\sum\limits_{l=-J}^J g\!\left( \frac{l-\alpha \theta(0)}{J} \right) \exp{\left\{-i\int\limits_0^t\D \tau (l-\alpha \theta(\tau - \xi))h(\tau)\right\}},
+	\end{split}
+\end{equation*}
+где $h(\tau)=\frac 12 F_{\mu \nu}\dot{s}_\mu s_\nu$ (вообще говоря, $h(\tau)$ может зависеть и от $\cos{\theta}$), а $g(x)$-- некоторая функция (нас будут интересовать только два случая: $g(x)=x$, что соответствует $\cos{\theta}$, и $g(x)=\sqrt{1-x^2}$ для $\sin{\theta}$). Этот интеграл обобщает формулу из статьи \cite{Alekseev1988} (и работы \cite{Mnev}) на случай наличия предэкспоненциальных множителей в интеграле по траекториям по группе $SU(2)$. В итоге интегрирование по группе усложняет вид квадратичной части действия для переменной $s_\mu$: если раньше гамильтониан $h(\tau)$ имел вид энергии частицы в постоянном магнитном поле $F_{\mu \nu}$, то теперь в этом магнитном поле появилась явная зависимость от времени $\tau$ в виде функции Хевисайда $\theta(\tau-\xi)$. Слагаемые с компонентами $\vec{n}(\xi)$ в ($\ref{eq:Gamma1Integral}$) преобразуются так:
+\begin{align*}
+	\cos{\phi}\sin{\theta}& 	&	&\longrightarrow 	&	\frac12 \sum\limits_{\alpha=\pm1}\gamma_1(l,\alpha)&\sqrt{1-\frac{(l-\alpha \theta(0))^2}{J^2}},\\
+	\sin{\phi}\sin{\theta}& 	&	&\longrightarrow 	&	\frac{1}{2i} \sum\limits_{\alpha=\pm1}\alpha\gamma_1(l,\alpha)&\sqrt{1-\frac{(l-\alpha \theta(0))^2}{J^2}},\\
+	\cos{\theta}& 		&	&\longrightarrow 	&	\gamma_1(l,0)&\frac{l-\alpha \theta(0)}{J},
+\end{align*}
+где в $\gamma_1(l,\alpha)$ собран весь результат интегрирования по $\mathcal{D}s$.

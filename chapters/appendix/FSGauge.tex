@@ -1,0 +1,54 @@
+% !TEX root = ../../main.tex
+
+Здесь мы будем доказывать совместность формулы, связывающей потенциал $A_\mu$ и тензор напряжённости $F_{\mu \nu}$ в калибровке Фока--Швингера $x_\mu A_\mu(x) = 0$
+\begin{equation}
+	\label{eq:FSA}
+	A_\mu = - \int\limits_0^1\!\D t\, tx_\nu F_{\mu \nu}(tx)
+\end{equation}
+и определения тензора напряжённости $F_{\mu \nu}$
+\begin{equation}
+	\label{eq:FSF}
+	F_{\mu \nu}=\partial_\mu A_\nu - \partial_\nu A_\mu - ig [A_\mu, A_\nu],
+\end{equation}
+т.е. что подстановка ($\ref{eq:FSA}$) в ($\ref{eq:FSF}$) даст тот же тензор $F_{\mu \nu}$ (также см. \cite{Cronstrm1980}).
+
+Для доказательства нам понадобятся тождества Бьянки:
+\begin{equation}
+	\label{eq:FSBianchi}
+	\nabla_\alpha F_{\beta \gamma} + \text{цикл.} = 0,
+\end{equation}
+где слева суммирование происходит по всем циклическим перестановка индексов $(\alpha, \beta, \gamma)$, а $\nabla_\alpha=\partial_\alpha-igA_\alpha$~--- ковариантная производная. Заметим также, что из формулы ($\ref{eq:FSA}$) следует условие $x_\mu A_\mu(x) = 0$. Чтобы проследить за знаками в вычислениях, введём в формуле ($\ref{eq:FSA}$) коэффициент $a$:
+\begin{equation*}
+	A_\alpha = a \int\limits_0^1\!\D t\, tx_\nu F_{\mu \nu}(tx).
+\end{equation*}
+Тогда в тензоре напряжённости ($\ref{eq:FSF}$) будут следующие слагаемые:
+\begin{align*}
+	\partial_\mu A_\nu &= a \int\limits_0^1\!\D t\, t F_{\nu \mu}(tx) + t^2 x_\beta\, \partial_\mu F_{\nu \beta} (tx),\\
+	\partial_\nu A_\mu &= (\mu \leftrightarrow \nu),\\
+	[A_\mu, A_\nu] &= a^2 \int\limits_0^1\!\D t\int\limits_0^1\!\D s\, ts x_\alpha x_\beta [F_{\mu \alpha}(tx), F_{\nu \beta}(sx)]\\
+	&=a^2 \left(\int\limits_0^1\!\D t\int\limits_0^t\!\D s+ \int\limits_0^1\!\D t\int\limits_t^1\!\D s\right)ts x_\alpha x_\beta [F_{\mu \alpha}(tx), F_{\nu \beta}(sx)]\\
+	&= a^2 \int\limits_0^1\!\D t\int\limits_0^t\!\D s\, ts \,x_\alpha x_\beta \left([F_{\mu \alpha}(tx), F_{\nu \beta}(sx)] + [F_{\mu \alpha}(sx), F_{\nu \beta}(tx)]\right).
+\end{align*}
+Теперь воспользуемся тождествами Бьянки ($\ref{eq:FSBianchi}$):
+\begin{align*}
+	\partial_\mu F_{\nu \beta}(tx) - \partial_\nu F_{\mu \beta} (tx) &= \partial_\mu F_{\nu \beta}(tx) + \partial_\nu F_{\beta\mu} (tx)\\
+	&= -\partial_\beta F_{\mu \nu}(tx) + ig[A_\mu,F_{\nu \beta}(tx)]+\text{цикл.}\\
+	&= -\partial_\beta F_{\mu \nu}(tx) + iga\! \int\limits_0^1\!\D s\, ts\,x_\alpha\left([F_{\mu \alpha}(stx),F_{\nu \beta}(tx)]+\text{цикл.}\right)\\
+	&= -\partial_\beta F_{\mu \nu}(tx) + \frac{iga}{t}\!\int\limits_0^t\!\D s\, s\,x_\alpha\left([F_{\mu \alpha}(sx),F_{\nu \beta}(tx)]+\text{цикл.}\right),
+\end{align*}
+где в последнем равенстве мы заменили переменную интегрирования $s\to s/t$, а суммирование происходит по всем циклическим перестановкам индексов $(\mu, \nu, \beta)$ при фиксированном $\alpha$. Соберём теперь вместе вклады в тензор напряжённости:
+\begin{equation}
+	\label{eq:FSCalc}
+	\begin{split}
+	F_{\mu \nu} &= \int\limits_0^1\!\D t\, -2taF_{\mu \nu}(tx) - t^2 a x_\beta\partial_\beta F_{\mu \nu}(tx)\\
+	&+ iga^2\int\limits_0^1\D t\int\limits_0^t\!\D s\, ts \underbracket{x_\alpha x_\beta}_{\text{симм.}} \Biggl([F_{\mu \alpha}(sx), F_{\nu \beta}(tx)] + [F_{\nu \alpha}(sx), F_{\beta \mu}(tx)]\\
+	&+ [\underbracket{F_{\beta \alpha}(sx)}_{\text{антисимм.}}, F_{\mu \nu}(tx)] - \underbracket{[F_{\mu \alpha}(tx), F_{\nu \beta}(sx)]}_{[F_{\nu \alpha}(sx),F_{\beta\mu}(tx)]} - [F_{\mu \alpha}(sx),F_{\nu \beta}(tx)]\Biggl)\\
+	&= -a\int\limits_0^1\!\D t\, 2tF_{\mu \nu}(tx) + t^2 \underbracket{x_\beta\partial_\beta F_{\mu \nu}(tx)}_{\partial_t\left( F_{\mu \nu}(tx)\right)}=-a F_{\mu \nu}(x),
+	\end{split}
+\end{equation}
+где использовалось:
+\begin{align*}
+	x_\alpha x_\beta [F_{\mu \alpha}(tx), F_{\nu \beta}(sx)] = x_\alpha x_\beta [F_{\mu \beta}(tx), F_{\nu \alpha}(sx)]&=-x_\alpha x_\beta[F_{\nu \alpha}(sx),F_{\mu \beta}(tx)]\\
+	&= x_\alpha x_\beta[F_{\nu \alpha}(sx),F_{\beta\mu}(tx)].
+\end{align*}
+В итоге, положив $a=-1$, вычисление ($\ref{eq:FSCalc}$) доказывает совместимость ($\ref{eq:FSA}$) и ($\ref{eq:FSF}$).

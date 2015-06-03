@@ -1,0 +1,66 @@
+%% Creator: Inkscape 0.91, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'axis.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{413.33659291bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.23570131)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{axis.pdf}}%
+    \put(0.96818951,0.05338817){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$\tau$}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{axis.pdf}}%
+    \put(0.14536623,0.22825429){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$lF_{\mu\nu}$}}}%
+    \put(0.59383127,0.15967474){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$l'F_{\mu\nu}$}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{axis.pdf}}%
+    \put(0.01493315,0.04310458){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$0$}}}%
+    \put(0.31668339,0.04310458){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$\xi$}}}%
+    \put(0.64255915,0.04310458){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$\tau'$}}}%
+    \put(0.9407577,0.04308946){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t$}}}%
+    \put(0.09044593,0.00194681){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$c_1(e^{2lF\tau}-1)$}}}%
+    \put(0.41984996,0.00196075){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$c_2e^{2l'F\tau}+c_3$}}}%
+    \put(0.68162593,0.00196075){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$c_4(e^{2l'F\tau}-e^{2l'Ft})$}}}%
+  \end{picture}%
+\endgroup%

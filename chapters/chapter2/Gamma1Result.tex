@@ -1,0 +1,34 @@
+% !TEX root = ../../main.tex
+
+Итак, зная вид пропагатора  ($\ref{eq:GreensFunc}$), можно завершить вычисление $\Gamma_1$. Интегрирование по $SU(2)$ сведётся к изменению $G_{\mu \nu}$ в зависимости от выбранного предэкспоненциального слагаемого в (\ref{eq:Gamma1Integral}). Для каждого из этих слагаемых интеграл по $\mathcal{D}s$ даст (\ref{eq:Gamma1}), отличаться будет только сам пропагатор, который теперь будет зависеть не только от <<проекции спина>> $l$, но и от $\alpha=\pm1$ и $\xi\in[0,t]$. Если собрать в $\gamma_1(l,\alpha)$ результат интегрирования по $\mathcal{D}s$, то (\ref{eq:Gamma1Integral}) перепишется так:
+\begin{equation*}
+	\begin{split}
+		\Gamma_1=-\frac i8 J \sum\limits_{l=-J}^J \Bigg[ &\nabla_{(\rho}\nabla_\sigma F_{\nu)\mu}^1 \frac12 \sum\limits_{\alpha=\pm1}\gamma_1(l,\alpha)\sqrt{1-\frac{(l-\alpha \theta(0))^2}{J^2}}\\
+		+ &\nabla_{(\rho}\nabla_\sigma F_{\nu)\mu}^2 \frac{1}{2i} \sum\limits_{\alpha=\pm1}\alpha\gamma_1(l,\alpha)\sqrt{1-\frac{(l-\alpha \theta(0))^2}{J^2}}\\
+		+ &\nabla_{(\rho}\nabla_\sigma F_{\nu)\mu}^3 \gamma_1(l,0) \frac{l-\alpha \theta(0)}{J}\Bigg].
+	\end{split}
+\end{equation*}
+%Асимптотика при $t\to 0$:
+%\begin{align}
+%	\gamma(l,l')=\int\limits_0^t\D \xi \,G_{\dot{\mu} \nu} G_{\rho \sigma}\xrightarrow{t\to0}\frac{1}{15}F_{\mu \nu}\otimes \mathbbm{1}_{\rho \sigma}(l+l')t^3
+%\end{align}
+Если выбрать $\theta(0)=0$, то выражение для $\Gamma_1$ заметно упрощается в случае фундаментального представления $J=\frac12$ и $l=\pm \frac12$:
+\begin{equation}
+	\Gamma_1
+%	\Gamma_1&=-\frac i8\sum\limits_{l=\pm \frac12} \Bigg[ 
+%		l\,\nabla_{(\rho}\nabla_\sigma F_{\nu)\mu}^3 \left\{
+%			(lF_2)^{-1}\left(
+%				t \coth{lF_1t}\coth{lF_2t} - \frac{(lF_1)^3\coth{lF_1t}-F_2^3\coth{lF_2t}}{lF_1lF_2((lF_1)^2-(lF_2)^2)}
+%			\right)
+%		\right\}_{\rho \sigma}^{\mu \nu}
+%	\Bigg]
+%	\nonumber\\
+	\label{eq:Gamma1Answer}
+	=-\frac{i}{8}\tr\left[ \nabla_{(\rho}\nabla_\sigma F_{\nu)\mu} \left\{
+			F_2^{-1}\left(
+				t \coth{F_1t}\coth{F_2t} - \frac{(F_1)^3\coth{F_1t}-(F_2)^3\coth{F_2t}}{F_1F_2((F_1)^2 - (F_2)^2)}
+			\right)
+		\right\}_{\rho \sigma}^{\mu \nu}
+	\right]
+\end{equation}
+Матрицы $F_{1,2}$ действуют на $\mathbb{R}\otimes\mathbb{R}$ и равны $F\otimes\mathbbm{1}$ и $\mathbbm{1}\otimes{F}$ соответственно, причём индексы $(\mu, \nu)$ относятся к первой матрице, а $(\sigma,\rho)$ ко второй.

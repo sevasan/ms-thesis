@@ -1,0 +1,235 @@
+% !TEX root = main.tex
+
+%\documentclass[numbers=noenddot,14pt]{extarticle}
+%\usepackage[a4paper,top=20mm,left=20mm,bottom=20mm,right=10mm]{geometry}
+%
+%% XeTeX packages
+%\usepackage[cm-default]{fontspec} % or install lmodern and remove cm-default opt
+%%\usepackage{fontspec}
+%%\defaultfontfeatures{Scale=MatchLowercase}
+%
+%\usepackage{xunicode} % some extra unicode support
+%\usepackage{xltxtra} % \XeLaTeX macro
+%\usepackage{polyglossia}
+%
+%\newfontfamily{\cyrillicfonttt}{Times New Roman}
+%
+%\usepackage{amsmath}
+%\usepackage{array}
+%%\usepackage[pdftex]{graphicx}
+%%\usepackage{graphicx}
+%%\usepackage{epstopdf}
+%
+%\usepackage{float}
+%\usepackage{subfigure}
+%\usepackage[justification=centering]{caption}
+%%\usepackage{caption}
+%%\usepackage{subcaption}
+%
+%\setdefaultlanguage{russian}
+%% Setting default fonts
+%\setmainfont[Ligatures=TeX]{Times New Roman}
+%
+%\tolerance=1000			% переносы строк
+%\emergencystretch=0.74cm	% -- " -- " --
+%\usepackage{indentfirst} 		% I believe it is better for Russian
+%
+%\setcounter{tocdepth}{2}
+%
+%\usepackage{setspace}		%supah spacing
+%\onehalfspacing			%correct spacing for GOST
+%
+%\usepackage[nottoc]{tocbibind}	%add bibliography to toc
+%
+%%\hyphenation{классицис-ти-чес-кой}
+%%\hyphenation{кирил-ли-чес-ких}
+%
+%
+%%some magic for hbar working properly
+%\newsavebox{\myhbar}
+%\savebox{\myhbar}{$\hbar$}
+%\renewcommand*{\hbar}{\mathalpha{\usebox{\myhbar}}}
+%%end of magic for hbar
+%
+%\usepackage{hyperref}
+%
+%\hypersetup{
+%        unicode=true,
+%        pdftitle={
+%        },
+%        pdfauthor={},
+%        pdfkeywords={
+%        },
+%        colorlinks,
+%        citecolor=black,
+%        filecolor=black,
+%        linkcolor=black,
+%        urlcolor=black
+%}
+%
+
+\documentclass[a4paper,14pt]{extreport}
+
+\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{totcount}
+
+\usepackage[english,russian]{babel}
+
+\usepackage{setspace}		%spacing
+\onehalfspacing			%correct spacing for GOST
+
+\usepackage{amsmath,amssymb,mathtools}
+
+\usepackage{hyperref}
+
+\usepackage[dvips]{graphicx}
+\graphicspath{{img/}}
+\usepackage{float}	%for floating figures and things like \begin{figure}[H] to work
+\usepackage[all]{hypcap}	%fix links to floats
+\usepackage[labelsep=period]{caption}	% Russian-styled figure and table captions
+
+\usepackage[usenames,dvipsnames]{color}
+
+\usepackage{extsizes}
+\usepackage{cmap}
+
+\usepackage{feynmp}
+\usepackage{bbm}	%for fancy \mathbbm{1}
+
+\usepackage{titlesec}
+\usepackage{indentfirst}
+\usepackage{cite}	%for some reason
+
+\usepackage{chngcntr}	%counters interface
+\counterwithout{equation}{chapter}
+
+% Nice citations [1,2,3,4] -> [1-4]
+\usepackage[numbers,sort&compress]{natbib}
+
+% [1] -> 1. in the bibliography
+\makeatletter
+	\renewcommand\@biblabel[1]{#1.}
+\makeatother
+
+% Here we define the relationships for the counters: normaly we should
+% reset the eq, figure & table counters every chapter
+%\makeatletter
+%	\@addtoreset{equation}{section} % Equation counter
+%	\@addtoreset{figure}{section} % Figure counter
+%	\@addtoreset{table}{section} % Table counter
+%\makeatother
+
+\titleformat{\section}{\bfseries\Large\raggedright}
+        	{\arabic{section}}{1ex}{}
+\titleformat{\subsection}[block]{\bfseries\large\raggedright}
+	{\arabic{section}.\arabic{subsection}}{1ex}{}
+\titleformat{\subsubsection}[block]{\bfseries\normalsize\raggedright}
+	{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}{1ex}{}
+
+\setcounter{tocdepth}{1}
+
+%\renewcommand{\theequation}{\arabic{equation}}
+%\renewcommand{\thefigure}{\arabic{figure}}
+%\renewcommand{\thetable}{\arabic{table}}
+%%=============================================================================
+%%\titleformat{\section}{\bfseries\large\sffamily\raggedright}
+%%        {\hspace{1cm}\arabic{section}.}{1ex}{}
+%%\titleformat{\subsection}[block]{\bfseries\normalsize\sffamily\raggedright}
+%%        {\hspace{1cm}\arabic{section}.\arabic{subsection}.}{1ex}{}
+%%\titleformat{\subsubsection}[block]{\normalsize\sffamily\raggedright}
+%%        {\hspace{1cm}\arabic{section}.\arabic{subsection}.\arabic{subsubsection}.}{1ex}{}
+%%
+%%\titlespacing*{\section}      {0pt}{3.50ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+%%\titlespacing*{\subsection}   {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+%%\titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+%%
+%%\usepackage[titles]{tocloft}
+%%
+%%\renewcommand{\cftsecpresnum}{}
+%%\renewcommand{\cftsecleader}{\bfseries\cftdotfill{\cftdotsep}}
+%%\renewcommand{\cftsecaftersnum}{.}
+%%\renewcommand{\cftsubsecaftersnum}{.}
+%%
+%%\newlength{\zyvseclen}
+%%\settowidth{\zyvseclen}{\bfseries\cftsecpresnum\cftsecaftersnum}
+%%\addtolength{\zyvseclen}{2mm}
+%%\addtolength{\cftsecnumwidth}{\zyvseclen}
+%%
+%%\renewcommand{\thesection}{\arabic{section}}
+%%\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+%%\renewcommand{\thesubsubsection}
+%%        {\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+%%
+%%=============================================================================
+
+
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+%\fancyhead{}
+%\fancyfoot{}
+%\fancyfoot[C] {\thepage}
+%%\rhead{Честнов Сева, 602}
+
+\usepackage[a4paper,top=20mm,left=20mm,bottom=20mm,right=10mm]{geometry}
+
+\tolerance=500 \Russian
+
+\DeclareGraphicsRule{.1}{mps}{*}{}
+\setlength{\unitlength}{.03cm}
+
+\newcommand{\D}{\mathrm{d}}
+\newcommand{\tr}{\mathrm{tr}}
+
+\renewcommand\contentsname{Содержание}
+%============================================================================
+% следующий код взят из 
+% http://mirrors.ctan.org/info/svg-inkscape/InkscapePDFLaTeX.pdf
+\newcommand{\executeiffilenewer}[3]{
+	\ifnum\pdfstrcmp{\pdffilemoddate{#1}}
+	{\pdffilemoddate{#2}} > 0 {\immediate\write18{#3}}\fi
+}
+\newcommand{\includesvg}[1]{
+	\executeiffilenewer{#1.svg}{#1.pdf}{
+		inkscape -z -D --file=#1.svg
+		--export-pdf=#1.pdf --export-latex
+	}
+	\input{#1.pdf_tex}
+}
+%============================================================================
+
+\newtotcounter{figurecnt}
+\def\oldfig{} \let\oldfig=\figure
+\def\figure{\stepcounter{figurecnt}\oldfig}
+
+\newtotcounter{tablecnt}
+\def\oldtab{} \let\oldtab=\table
+\def\table{\stepcounter{tablecnt}\oldtab}
+
+\newtotcounter{citeitem}
+\renewcommand{\citeform}[1]{%
+\ifnum#1>\totvalue{citeitem}%
+{\setcounter{citeitem}{#1} }\fi%
+#1%
+}
+
+\regtotcounter{page}
+
+\def\formbytotal#1#2#3#4#5{%
+    \newcount\c
+    \c \totvalue{#1}\relax
+    \newcount\last
+    \newcount\pnul
+    \last \c\relax
+    \divide \last 10
+    \pnul \last\relax
+    \divide\pnul 10
+    \multiply \pnul-10
+    \advance \pnul\last
+    \multiply \last-10
+    \advance \last\c
+    \total{#1}~#2%
+    \ifnum\pnul=1#5\else%
+        \ifcase\last#5\or#3\or#4\or#4\or#4\else#5\fi
+    \fi
+}

@@ -1,0 +1,62 @@
+% !TEX root = ../../main.tex
+
+В этом разделе мы исследуем частный случай формулы ($\ref{eq:intFullGhost}$) и доказываем формулу для эффективного действия ($\ref{eq:EffLagrangianCovarConst}$).
+
+Интеграл ($\ref{eq:intFullGhost}$) можно вычилслить точно для ковариантно--постоянного поля \cite{Mnev}, т.к. в этом случае интеграл будет гауссовым:
+\begin{equation*}
+	K_{-\nabla^2}(t)=\mkern-6\thickmuskip\int\limits_{s(0)=s(t)=0} \mkern-6\thickmuskip\mathcal{D}s\mathcal{D}U \exp\left\{ \int\limits_0^t \D \tau \left(-\frac{\dot{s}^2}{4} + iJ\tr\left[\sigma_3\left( -\frac12 U^\dagger F_{\mu\nu}U \dot{s}_\mu s_\nu + iU^\dagger \dot{U}\right)\right] \right)\right\}.
+\end{equation*}
+Интегрирование по $SU(2)$ даёт следующий результат \cite{Mnev}:
+\begin{equation*}
+	K_{-\nabla^2}(t)=\sum\limits_{l=-J}^J\int\mathcal{D}s\, \exp{\left\{ \int\limits_0^t \D \tau \, \left(-\frac{\dot{s}^2}{4} - il\frac12 F_{\mu \nu}\dot{s}_\mu s_\nu \right)\right\}}.
+\end{equation*}
+Заметим, что выражение в экспоненте имеет вид действия частицы в однородном магнитном поле. Ковариантно--постоянное поле $F_{\mu \nu}$ можно привести к пфаффовой форме (с помощью ортогонального преобразования $O$) во всём пространстве так как:
+\begin{equation}
+	\label{eq:Commutator}
+	\left[F_{\mu \nu},F_{\sigma \rho}\right]=0.
+\end{equation}
+В итоге тензор напряжённости примет вид:
+\begin{equation}
+	\label{eq:FPffaf}
+	\hat{F}=O^{T}F_{\mu \nu}O=
+	\begin{bmatrix}
+		0 & F_1 & & \\
+		-F_1 & 0 & &\\
+		& & 0 & F_2\\
+		& & -F_2 & 0
+	\end{bmatrix}=
+	\mathrm{diag}\left\{F_1 i\sigma_2,F_2 i\sigma_2\right\}.
+\end{equation}
+Тогда интегралы по двум парам переменных $s_\mu$ разделяются и, используя результаты для заряженной частицы в магнитном поле, мы получим:
+\begin{equation}
+	\label{eq:HeatKernelCovarConstResult}
+	K_{-\nabla^2}(t)=\sum\limits_{l=-J}^J (4\pi t)^{-d/2} \left(\mathrm{Det}\frac{\sin{\left(l F t\right)}}{l F t}\right)^{-1/2},
+\end{equation}
+где дробь внутри детерминанта понимается в смысле ряда.
+%\begin{align*}
+%	\mathrm{Det}\left[f(F)\right]&=\mathrm{Det}\left[\sum\limits_n f_n F^n\right] = \mathrm{Det}\left[\sum\limits_n f_n O \hat{F}^n O^T\right]=\mathrm{Det}\left[O\, \mathrm{diag}\left\{f(\lambda_1 i\sigma_2),f(\lambda_2 i\sigma_2))\right\}O^T\right]\\
+%	&=\mathrm{Det}\left[ f(\lambda_1 i\sigma_2)\right]\, \mathrm{Det}\left[ f(\lambda_2 i\sigma_2)\right]
+%\end{align*}
+%
+%\begin{align*}
+%	K_{-\nabla^2}(y,y;t)=\sum\limits_{l=-J}^J (4\pi t)^{-d/2} \frac{l \lambda_1 t}{\sin{\left(l \lambda_1 t\right)}}\frac{l \lambda_2 t}{\sin{\left(l \lambda_2 t\right)}}
+%\end{align*}
+
+Аналогично можно вычислить интеграл ($\ref{eq:intFullGauge}$). Здесь слагаемое с $-2F_{\mu \nu}$ сразу интегрируется и мы получаем:
+\begin{equation*}
+	K_{-\nabla^2-2F_{\mu \nu}}(t)=K_{-\nabla^2}(t)\left( e^{-2iFt} \right)_{\mu \nu}.
+\end{equation*}
+Как уже отмечалось, в случае ковариантно--постоянного, компоненты тензора напряжённости коммутируют ($\ref{eq:Commutator}$), поэтому их одновременно можно привести к диагональной форме (вообще говоря, к картановской подалгебре). Далее, ограничимся случаем $F_1=F$, $F_2=0$ в ($\ref{eq:FPffaf}$), тогда собственные числа матрицы $2iF_{\mu \nu}$ будут $(\pm 2 F,0,0)$, поэтому одно из них даст экспоненциальную расходимость при $t\to \infty$. Вклад нулевых собственных чисел сократится слагаемым духов. Тогда однопетлевая поправка к лагранжиану эффективного действия в случае ковариантно--постоянного фонового поля примет вид (см. также  \cite{Kennaway2004}):
+\begin{equation*}
+	\begin{split}
+		\mathcal{L}^{1}&=-\int\limits_0^\infty\!\frac{\D t}{t}\, \left( \frac12 \tr \,K_{-\nabla^2-2F_{\mu \nu}}(t) -  K_{-\nabla^2}(t) \right)\\
+		&=-\frac{1}{16\pi^2}\int\limits_0^\infty\!\frac{\D t}{t^2}\, \frac{F}{\sin{Ft}}\frac{\left( e^{-2iFt}+e^{2iFt} \right)}{2} =-\frac{F^2}{16\pi^2}\int\limits_0^\infty\!\frac{\D t}{t^2}\, \frac{e^{-3it}+e^{it}}{1-
+e^{-2it}}.
+	\end{split}
+\end{equation*}
+Введём теперь ультрафиолетовое обрезание $\epsilon$ и выделим отдельно член $~e^{iFt}$, после чего повернём контуры интегрирования $t\to -it$ и $t\to it$ и получим такое выражение для лагранжиана эффективного действия ковариантно--постоянного поля:
+\begin{equation}
+	\label{eq:EffLagrangianCovarConst}
+	\mathcal{L}^1=-\frac{1}{4g^2}F^2 - \frac{11}{6}\frac{F^2}{16\pi^2}\left(\ln\left(\frac{F}{\mu^2}\right) - c\right)+ i \frac{F^2}{16\pi},
+\end{equation}
+где $c$-- постоянная, зависящая от схемы регуляризации. Видно, что в эффективном действии появляется мнимая добавка, что интерпретируется как неустойчивость ковариантно--постоянного вакуума в однопетлевом приближении.

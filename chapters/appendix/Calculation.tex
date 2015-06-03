@@ -1,0 +1,59 @@
+% !TEX root = ../../main.tex
+
+Здесь мы будем доказывать формулу:
+\begin{equation}
+	\label{eq:IntWithSource}
+	\begin{split}
+		&\int\mathcal{D}\phi \mathcal{D}\cos{\theta}\, e^{iJ\int\limits_0^t \dot{\phi}(\cos{\theta} - 1) - h(\tau)\cos{\theta} - j(\tau)\phi}=\sum\limits_{l=-J}^J e^{-i l \int\limits_0^t\!\D \tau\, h(\tau)-iJ \int\limits_0^t\!\D s\, \D \tau\, j(s) h(\tau) \theta(s - \tau)}.
+	\end{split}
+\end{equation}
+Доказательство во многом аналогично \cite{Mnev}. По переменной $\phi$ подразумеваются граничные условия $\phi(0)=\phi(t)+2\pi n$ (по всем $n\in \mathbb{Z}$ необходимо просуммировать), а по переменной $\cos{\theta}$: $\cos{\theta(0)}=\cos{\theta(t)}$. Итак, напишем дискретизированную версию этого интеграла:
+\begin{align*}
+	I_1&=\sum\limits_{n\in \mathbb{Z}} \int\limits_{\phi(0)=\phi(t)+2\pi n}\mathcal{D}\phi \mathcal{D}\cos{\theta} \exp{\left\{ iJ\int\limits_0^t \dot{\phi}(\cos{\theta} - 1) - h(\tau)\cos{\theta} - j(\tau)\phi \right\}}\\
+	&= J^N \int\limits_0^{2\pi} \!\D \phi_N \int\limits_{-\infty}^\infty \! \prod\limits_1^{N-1}\!\D \phi_k \int\limits_{-1}^1\!\prod\limits_1^N\!\D\cos{\theta_k}\,e^{ iJ\sum\limits_1^N \left[ (\phi_k - \phi_{k-1})(\cos{\theta_k} - 1) - \frac{t}{N}(h_k \cos{\theta_k} +j_k \phi_k) \right]}\\
+	&= J \int\limits_{-1}^1\!\prod_1^N\! \D\cos{\theta_k} \prod_1^{N-1}\!\delta\!\left(\cos{\theta_k} - \cos{\theta_{k+1}} - \frac{t}{N}j_k\right)\,e^{-iJ\sum\limits_{k=1}^N \frac{t}{N}h_k\cos{\theta_k}}\underbracket{\sum\limits_{n\in \mathbb{Z}} e^{2\pi i Jn(\cos{\theta_N}-1)}}_{\sum\limits_{m\in \mathbb{Z}} \delta(J(\cos{\theta_N} - 1) - m)},\\
+\end{align*}
+где в последней строке используется  формула Пуассона. В процессе интегрирования по $\cos{\theta_k}$, возникает следующая свёртка тока $j(s)$ и гамильтониана $h(\tau)$:
+\begin{align*}
+	&\frac tN\left( h_1\cos{\theta_1} + h_2\cos{\theta_2} + \dots + h_N\cos{\theta_N} \right) \to \frac tN\left(h_1\left(\cos{\theta_2} + \frac tN j_1\right) + h_2\cos{\theta_2} + \dots\right)\\
+	&\to \frac tN\left(\sum\limits_{i=1}^N h_i\cos{\theta_N} + \frac tN h_1 j_1 + \frac tN (h_1 + h_2) j_2 + \dots + \frac tN (h_1 + h_2 + \dots + h_{N-1})j_{N-1}\right)\\
+	&\to \int\limits_0^t \!\D s\int\limits_0^s\!\D \tau \,j(s)h(\tau) + \cos{\theta_N}\int\limits_0^t\! \D\tau\, h(\tau) = \int\limits_0^t \!\D s\, \D \tau \,j(s)h(\tau)\theta(s-\tau) + \cos{\theta_N}\int\limits_0^t\! \D\tau\, h(\tau)
+\end{align*}
+где первая строчка следует из интегрирования по $\cos{\theta_1}$, а вторая из интегрирования по всем $\cos{\theta_k}$, $k=1\dots N-1$. Интеграл по $\phi_N$ будет константой:
+\begin{equation*}
+	\int\limits_0^{2\pi}\!\D\phi_N \exp{\left\{ -\frac{iJt}{N} j_N \phi_N \right\}} = \frac{N}{iJtj_N}\left( 1 - \exp{\left\{ -\frac{2\pi i J t}{N}j_N \right\}} \right) \xrightarrow{N\to \infty} 2\pi,
+\end{equation*}
+и поэтому не даст существенного вклада. И в итоге мы получим:
+\begin{equation*}
+	\label{eq:intGeneral}
+	I_1  = \sum\limits_{l=-J}^J\exp{\left\{ -i l \int_0^t\!\D \tau\, h(\tau) \right\}} \exp{\left\{-iJ \int\limits_0^t\!\D s\, \D \tau\, j(s) h(\tau) \theta(s - \tau) \right\}},
+\end{equation*}
+где $\theta(x)$-- функция Хевисайда. Формула ($\ref{eq:IntWithSource}$) доказана. Воспользуемся этим результатом для вычисления следующего интеграла:
+\begin{equation*}
+	I_2=\int\mathcal{D}\phi\,\mathcal{D}\cos{\theta}\,\exp{\left\{ iJ\int\limits_0^t \D \tau\,\dot{\phi} (\cos{\theta} - 1) - h(\tau)\cos{\theta}\right\}} \exp{\left\{i \alpha \phi(\xi)\right\}} \, g(\cos{\theta(\xi)}).
+\end{equation*}
+Чтобы взять этот интеграл, введём в аргумент экспоненты слагаемое с током $j(\tau) \phi$ и предэкспоненциальные множители с помощью вариационных производных по этому току $\frac{\delta}{\delta j(\xi)}$ (как при построении обычной теории возмущений):
+\begin{align*}
+	I_2&=e^{-i\alpha\frac{1}{iJ}\frac{\delta}{\delta j(\xi)}} \, g\!\left(-\frac{1}{iJ}\frac{\delta}{\delta h(\xi)}\right)
+\int\mathcal{D}\phi\,\mathcal{D}\cos{\theta}\,e^{iJ\int\limits_0^t \D \tau\,\dot{\phi} (\cos{\theta} - 1) - h(\tau)\cos{\theta} - j(\tau)\phi}\Bigg{|}_{j=0}\\
+	&=e^{-i\alpha\frac{1}{iJ}\frac{\delta}{\delta j(\xi)}} \, g\!\left(-\frac{1}{iJ}\frac{\delta}{\delta h(\xi)}\right)
+\sum\limits_{l=-J}^J e^{-il\int\limits_0^t\D \tau \, h(\tau) - iJ\int\limits_0^t\D \tau \D s \, h(\tau)j(s) \theta(\tau-s)}\Bigg{|}_{j=0}\\
+	&=\sum\limits_{l=-J}^J e^{-i\alpha\frac{1}{iJ}\frac{\delta}{\delta j(\xi)}} \, g\!\left( \frac lJ +\mkern-\thickmuskip \int\limits_0^t \!\D s \, j(s) \theta(\xi - s) \right)e^{-il\int\limits_0^t\D \tau \, h(\tau) - iJ\int\limits_0^t\D \tau \D s \, h(\tau)j(s) \theta(\tau-s)} \Bigg{|}_{j=0}.
+\end{align*}
+Что приводит к:
+\begin{equation}
+	\label{eq:intGeneralVertex}
+	\begin{split}
+		&\int\mathcal{D}\phi\,\mathcal{D}\cos{\theta}\,\exp{\left\{ iJ\int\limits_0^t \D \tau\,\dot{\phi} (\cos{\theta} - 1) - h(\tau)\cos{\theta}\right\}} \exp{\left\{i \alpha \phi(\xi)\right\}} \, g(\cos{\theta(\xi)})\\
+		&=\sum\limits_{l=-J}^J g\!\left( \frac{l-\alpha \theta(0)}{J} \right) \exp{\left\{-i\int\limits_0^t\D \tau (l-\alpha \theta(\tau - \xi))h(\tau)\right\}},
+	\end{split}
+\end{equation}
+где $\alpha=\pm 1$, а $g(x)$ может быть любой (аналитической) функцией, но нас будут интересовать только два случая:
+\begin{equation*}
+	g(x)=
+	\begin{cases}
+		x\\
+		\sqrt{1-x^2}
+	\end{cases}
+\end{equation*}
+В формуле ($\ref{eq:intGeneralVertex}$) появляется $\theta(0)$-- значение функции Хэвисайда в нуле (которое требует отдельного доопределения) и явная зависимость от собственного времени в показателе экспоненты в виде $\theta(\tau - \xi)$, что повлияет на вид функции Грина этой задачи.
